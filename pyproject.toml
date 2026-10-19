@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robot-learning-playground"
+version = "0.1.0"
+description = "Small robot learning experiments in MuJoCo: behavior cloning, VLA, and world models"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mujoco", "numpy", "scipy", "torch", "h5py", "PyYAML",
+    "matplotlib", "imageio", "imageio-ffmpeg", "Pillow",
+]
+
+[project.scripts]
+robot-learning = "robot_learning.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["robot_learning*", "util", "mujoco_irb120", "mujoco_irb120.util"]
+namespaces = true
+
+[tool.setuptools.package-data]
+robot_learning = ["assets/*.xml", "configs/*.yaml", "environment/*.yaml"]
